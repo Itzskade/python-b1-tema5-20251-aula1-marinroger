@@ -95,15 +95,40 @@ Exemple:
 """
 
 # Write class DatabaseConnector here
+class DatabaseConnector():
+    def __init__(self):
+        self._connected = False
+
+    def connect(self, database):
+        if isinstance(database, (SQLDatabase, PostgresDatabase, RedshiftDatabase)):
+            database._connected = True      
 
 # Write class SQLDatabase here
+class SQLDatabase():
+    def __init__(self):
+        self._connected = False
 
+    @property
+    def connected(self):
+        return self._connected
 
 # Write class PostgresDatabase here
+class PostgresDatabase():
+    def __init__(self):
+        self._connected = False
 
+    @property
+    def connected(self):
+        return self._connected
 
 # Write class RedshiftDatabase here
+class RedshiftDatabase():
+    def __init__(self):
+        self._connected = False
 
+    @property
+    def connected(self):
+        return self._connected
 
 # Por la propia naturaleza del ejercicios no se puede probar imprimiendo por pantalla, 
 # revisa los tests para revisar la corrección de tu propuesta de solución
